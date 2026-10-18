@@ -1,0 +1,480 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,
+  pdftitle={Prescribed Goldbach Lengths in the Nonnegative Polynomial Semiring},
+  pdfsubject={Additive representations by multiplicative semiring atoms}}
+\urlstyle{same}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Nzero}{\mathbb N_0}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Atoms}{\mathcal A}
+\newcommand{\Lplus}{\mathsf L_{+}}
+\newcommand{\Llaur}{\mathsf L_{\pm}}
+\DeclareMathOperator{\supp}{supp}
+\newcommand{\coeff}[2]{[x^{#1}]#2}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title[Prescribed Goldbach lengths]{Prescribed Goldbach Lengths in the Nonnegative Polynomial Semiring}
+\author{Shunyao Yan}
+\email{shunyaoyan2009@gmail.com}
+\date{Draft revised September 19, 2026}
+\subjclass[2020]{Primary 16Y60; Secondary 11P32}
+\keywords{Polynomial semiring, multiplicative atom, Goldbach theorem,
+additive representation, prescribed length, Laurent polynomial}
+
+\begin{document}
+
+\begin{abstract}
+We determine the possible numbers of multiplicative atoms in additive
+decompositions of nonconstant polynomials $f\in\Nzero[x]$ with $f(0)\ge2$.
+Writing $f=a+bx+P(x)$ with $P\in x^2\Nzero[x]$, we prove that $f$ is a sum
+of exactly $k\ge2$ atoms if and only if $k\le a+b$ and
+$2k\le a+2b+P(1)$. The proof is constructive and uses elementary parity
+criteria. In particular, every such polynomial is a sum of at most two
+atoms; the only exceptions to a sum of exactly two are $2+x^r$ with
+$r\ge2$. We also record a prescribed-length corollary of Kaplan--Polo's
+Laurent two-atom theorem. Atomicity is always in the indicated semiring,
+not in $\Q[x]$.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Goldbach-type questions ask for representations as sums of multiplicatively
+irreducible elements. Hayes~\cite{Hayes} and Pollack~\cite{Pollack} studied
+such questions over polynomial rings. In the nonnegative setting,
+Liao and Polo~\cite{LiaoPolo} proved that every
+$f\in\Nzero[x^{\pm1}]$ with $f(1)>3$ and $|\supp(f)|>1$ is a sum of two
+atoms. Kaplan and Polo~\cite{KaplanPolo} recovered this result without
+prime-distribution estimates and extended it to Laurent polynomial and
+series semidomains. Related work treats group semidomains~\cite{LiMopuriZhang}
+and the arithmetic of polynomial semidomains~\cite{GottiPolo}.
+
+In the ordinary semiring $\Nzero[x]$, the only zero-constant atom is $x$,
+whereas $x$ is a unit in the Laurent semiring. Thus a zero-constant
+polynomial having a term of degree at least two is not a sum of ordinary
+polynomial atoms. We instead classify the possible numbers of summands
+when the constant coefficient is at least two.
+
+Throughout, $\N=\{1,2,\ldots\}$ and $\Nzero=\{0,1,2,\ldots\}$.
+An \emph{atom} is a nonzero nonunit $h$ such that every factorization
+$h=uv$ in the indicated semiring has a unit factor. The only unit of
+$\Nzero[x]$ is $1$. Write $\Atoms$ for its atoms and define
+\[
+\Lplus(f)=
+\left\{k\in\N: f=h_1+\cdots+h_k\text{ for some }h_1,\ldots,h_k\in\Atoms\right\}.
+\]
+Repeated summands and prime-constant atoms are permitted. These are
+\emph{additive} representation lengths, not multiplicative factorization
+lengths. Semiring atomicity is also distinct from rational irreducibility:
+$1+x^3$ is a semiring atom, although
+$1+x^3=(1+x)(1-x+x^2)$ in $\Q[x]$.
+
+Our main result depends only on the constant coefficient, linear
+coefficient, and total mass of the higher-degree coefficients.
+
+\begin{theorem}[Prescribed-length classification]\label{thm:main}
+Let $f(x)=a+bx+P(x)\in\Nzero[x]$ be nonconstant, where
+$a\ge2$, $b\ge0$, and $P\in x^2\Nzero[x]$. Put $m=P(1)$.
+For every integer $k\ge2$,
+\begin{equation}\label{eq:capacity}
+k\in\Lplus(f)
+\quad\Longleftrightarrow\quad
+k\le a+b\quad\text{and}\quad 2k\le a+2b+m.
+\end{equation}
+Equivalently,
+\begin{equation}\label{eq:interval}
+\begin{gathered}
+K(f)=\min\left\{a+b,\left\lfloor\frac{a+2b+m}{2}\right\rfloor\right\},\\
+\Lplus(f)\cap\{2,3,\ldots\}=\{2,3,\ldots,K(f)\},
+\end{gathered}
+\end{equation}
+where the right side is empty if $K(f)<2$. Length one occurs precisely
+when $f$ itself is an atom.
+\end{theorem}
+
+The two inequalities are elementary necessary conditions. Their
+sufficiency holds for arbitrary degree and coefficient height, with no
+restriction on the positions of the exponents in $P$. The ordinary
+classification has a self-contained proof; the Laurent comparison in
+Section~\ref{sec:laurent} uses the cited two-atom theorem.
+
+\begin{corollary}[Sharp two-atom statement]\label{cor:two}
+Every nonconstant $f\in\Nzero[x]$ with $f(0)\ge2$ is a sum of at most two
+atoms. It is a sum of exactly two atoms if and only if
+\[
+f\ne2+x^r\qquad\text{for every }r\ge2.
+\]
+The exceptional polynomials $2+x^r$ are themselves atoms.
+\end{corollary}
+
+\section{Elementary atom certificates}
+
+For $h=\sum_{j\ge0}h_jx^j\in\Nzero[x]$, define
+\[
+E(h)=\sum_{j\text{ even}}h_j,\qquad
+O(h)=\sum_{j\text{ odd}}h_j.
+\]
+The constant coefficient contributes to $E(h)$.
+
+\begin{lemma}[Parity certificates]\label{lem:parity}
+Suppose $h\in\Nzero[x]$ has positive constant coefficient. Then $h$ is
+an atom if either
+\[
+O(h)=1,\qquad\text{or}\qquad E(h)=1\text{ and }h\ne1.
+\]
+\end{lemma}
+
+\begin{proof}
+If $h=uv$ in $\Nzero[x]$, then $u(0),v(0)>0$, and
+\begin{align*}
+E(h)&=E(u)E(v)+O(u)O(v),\\
+O(h)&=E(u)O(v)+O(u)E(v).
+\end{align*}
+Both $E(u)$ and $E(v)$ are positive integers. If $O(h)=1$, exactly one
+term in the second identity is one. After interchanging $u,v$, we have
+$O(u)=0$ and $E(u)=1$. Since $u(0)>0$, this forces $u=1$.
+If $E(h)=1$, the first identity forces $E(u)=E(v)=1$ and
+$O(u)O(v)=0$. A factor with no odd terms has exactly one even coefficient
+unit, necessarily at degree zero, and is therefore $1$.
+In either case $h$ is a nonunit, so it is an atom.
+\end{proof}
+
+\begin{lemma}[Exponent rescaling]\label{lem:rescale}
+If $H\in\Nzero[x]$ has positive constant coefficient and $D\ge1$, then
+$H(x^D)$ is an atom if and only if $H(x)$ is an atom. In particular,
+$c+x^r$ is an atom for all integers $c,r\ge1$.
+\end{lemma}
+
+\begin{proof}
+Suppose $H(x^D)=uv$ in $\Nzero[x]$. Both factors have positive constant
+coefficient. Every exponent in either factor's support also occurs in
+the product: multiply that term by the other factor's nonzero constant
+term and use nonnegativity. Hence every factor exponent is divisible by
+$D$, so $u=U(x^D)$ and $v=V(x^D)$ for some $U,V\in\Nzero[x]$.
+This factorization descends to $H=UV$, and units are preserved by
+substitution. The converse follows by substituting in a factorization of
+$H$. Finally, $c+x$ satisfies Lemma~\ref{lem:parity}; rescaling gives
+$c+x^r$.
+\end{proof}
+
+\begin{lemma}[Two-atom construction]\label{lem:two}
+Let $A\ge2$, let $0\ne R\in x\Nzero[x]$, and suppose $A+R(1)\ge4$.
+Then $A+R$ is a sum of two atoms of $\Nzero[x]$.
+\end{lemma}
+
+\begin{proof}
+If $R(1)=1$, then $R=x^r$ and $A\ge3$. The decomposition
+\[
+A+x^r=2+\bigl((A-2)+x^r\bigr)
+\]
+uses the prime constant $2$ and an atom from Lemma~\ref{lem:rescale}.
+
+Suppose $R(1)\ge2$. Let $D$ be the largest power of two dividing every
+exponent in $\supp(R)$. Write $R(x)=T(x^D)$. At least one exponent of
+$T$ is odd; otherwise $2D$ would divide every exponent of $R$.
+Decompose
+\[
+T=T_{\mathrm e}+T_{\mathrm o},
+\]
+where $T_{\mathrm e}$ has positive even exponents and $T_{\mathrm o}$ has
+odd exponents. Thus $T_{\mathrm o}(1)\ge1$.
+
+If $T_{\mathrm o}(1)\ge2$, choose an odd exponent $r$ occurring in
+$T_{\mathrm o}$. Then
+\begin{equation}\label{eq:split-odd}
+A+T=
+\bigl((A-1)+x^r+T_{\mathrm e}\bigr)
++\bigl(1+T_{\mathrm o}-x^r\bigr).
+\end{equation}
+The first summand has odd coefficient sum one. The second has even
+coefficient sum one and is not the unit, because
+$T_{\mathrm o}(1)\ge2$. Both have positive constant coefficient and are
+atoms by Lemma~\ref{lem:parity}.
+
+If $T_{\mathrm o}(1)=1$, write $T_{\mathrm o}=x^r$. Then
+$T_{\mathrm e}\ne0$, since $T(1)\ge2$. Choose an even exponent $s$
+occurring in $T_{\mathrm e}$. We have
+\begin{equation}\label{eq:split-even}
+A+T=
+\bigl((A-1)+x^s\bigr)
++\bigl(1+x^r+T_{\mathrm e}-x^s\bigr).
+\end{equation}
+The first summand is an atom by Lemma~\ref{lem:rescale}; the second has
+odd coefficient sum one and is an atom by Lemma~\ref{lem:parity}.
+Every coefficient in these decompositions is nonnegative. Substituting
+$x^D$ preserves atomicity by Lemma~\ref{lem:rescale} and gives the
+required decomposition of $A+R$.
+\end{proof}
+
+\section{Proof of the prescribed-length classification}
+
+For $h=\sum_{j\ge0}h_jx^j$, introduce the additive weights
+\begin{equation}\label{eq:weights}
+U(h)=h_0+h_1,\qquad
+W(h)=h_0+2h_1+\sum_{j\ge2}h_j=h(1)+h_1.
+\end{equation}
+
+\begin{lemma}[Necessary capacity inequalities]\label{lem:capacity}
+Every atom $h\in\Nzero[x]$ satisfies $U(h)\ge1$ and $W(h)\ge2$.
+Consequently, every sum of $k$ atoms satisfies $U(f)\ge k$ and
+$W(f)\ge2k$.
+\end{lemma}
+
+\begin{proof}
+The only zero-constant atom is $x$: a nonzero polynomial with zero
+constant coefficient factors as $xq$, and atomicity forces $q=1$.
+The constant atoms are exactly the positive integer primes. Any other
+atom has positive constant coefficient and at least one positive-degree
+term. For $x$ the weights are $(1,2)$; for a prime constant they are
+both at least two; and for a positive-constant nonconstant atom the
+inequalities are immediate. Additivity proves the assertion for a sum.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Necessity follows from Lemma~\ref{lem:capacity}, since $U(f)=a+b$ and
+$W(f)=a+2b+m$.
+
+For sufficiency, fix an integer $k\ge2$ satisfying the two inequalities,
+and induct on $k$. If $k=2$ and $f(1)\ge4$, apply Lemma~\ref{lem:two}.
+Otherwise $f(1)=3$, so $f=2+x^r$. The condition $W(f)\ge4$ forces
+$r=1$, and $2+x$ is the sum of the two atoms $2$ and $x$.
+
+Now let $k\ge3$. We remove one atom so that the remainder is
+nonconstant, has constant coefficient at least two, and satisfies the
+capacity inequalities for $k-1$.
+
+\smallskip
+\noindent\textit{Case 1: $a\ge k+1$.}
+Remove $2$. The remainder has constant coefficient
+$a-2\ge k-1\ge2$ and stays nonconstant. Moreover,
+\[
+U(f-2)=a+b-2\ge k-1,\qquad
+W(f-2)=W(f)-2\ge2(k-1).
+\]
+
+\smallskip
+\noindent\textit{Case 2: $a\le k$ and $b\ge1$.}
+Remove $x$. The constant coefficient is unchanged, and
+\[
+U(f-x)=U(f)-1\ge k-1,\qquad
+W(f-x)=W(f)-2\ge2(k-1).
+\]
+If $f-x$ were constant, then $f=a+x$, giving
+$2k\le a+2\le k+2$, impossible for $k\ge3$. Thus the remainder is
+nonconstant.
+
+\smallskip
+\noindent\textit{Case 3: $a\le k$ and $b=0$.}
+The first inequality gives $a=k$, and the second gives $m\ge k$.
+Choose $r\ge2$ with $\coeff rP>0$, and remove the atom $1+x^r$.
+The remainder has constant coefficient $k-1\ge2$ and higher-degree
+mass $m-1\ge k-1>0$. Its weights satisfy
+\[
+U\bigl(f-(1+x^r)\bigr)=k-1,\qquad
+W\bigl(f-(1+x^r)\bigr)=W(f)-2\ge2(k-1).
+\]
+In all three cases, the induction hypothesis writes the remainder as a
+sum of $k-1$ atoms. Adjoining the removed atom proves sufficiency.
+Formula~\eqref{eq:interval} follows directly from~\eqref{eq:capacity},
+and the assertion about length one follows from the definition.
+\end{proof}
+
+The proof is constructive: repeatedly remove $2$, $x$, or $1+x^r$
+according to the three cases, and finish with the explicit two-atom
+decomposition. No search for integer prime pairs is required.
+
+\section{Sharp consequences in the ordinary semiring}
+
+\begin{proof}[Proof of Corollary~\ref{cor:two}]
+For $k=2$, the bound $2\le a+b$ is automatic. For a nonconstant target
+with $a\ge2$, the other inequality fails exactly when
+$a=2$, $b=0$, and $m=1$, that is, when $f=2+x^r$ with $r\ge2$.
+These exceptional polynomials are atoms by Lemma~\ref{lem:rescale}.
+\end{proof}
+
+\begin{corollary}[Constant coefficient two]\label{cor:constant-two}
+Let $f=2+bx+P$ be nonconstant, where $b\ge0$ and $P\in x^2\Nzero[x]$.
+Put $m=P(1)$. Then $\Lplus(f)\cap\{2,3,\ldots\}=\{2,\ldots,K(f)\}$,
+where
+\[
+K(f)=
+\begin{cases}
+b+1,&m=0\text{ or }1,\\
+b+2,&m\ge2.
+\end{cases}
+\]
+The interval is empty when $K(f)=1$.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:main} gives
+\[
+K(f)=\min\left\{b+2,\ b+1+\left\lfloor\frac m2\right\rfloor\right\}.
+\qedhere
+\]
+\end{proof}
+
+\begin{example}[Why the linear coefficient matters]\label{ex:linear}
+The polynomials $2+2x$ and $2+2x^r$ for $r\ge2$ have the same total
+coefficient sum, but
+\[
+\Lplus(2+2x)=\{2,3\},\qquad
+\Lplus(2+2x^r)=\{2\}.
+\]
+For the first, $2+x+x$ is a three-atom representation. For the second,
+$U(f)=2$ restricts every representation to at most two summands.
+Neither polynomial is an atom, since both have the nonunit constant
+factor $2$.
+\end{example}
+
+\begin{remark}[The constant-one boundary]\label{rem:constant-one}
+The hypothesis $f(0)\ge2$ cannot be omitted. For instance,
+\[
+\Lplus(1+7x+6x^2)=\{2,4,5,6,7,8\},
+\]
+which has a gap. In any atomic representation of a constant-one
+polynomial, exactly one summand has positive constant coefficient; all
+others must be $x$. Thus a length-$k$ representation of this example
+exists exactly when
+\[
+1+(8-k)x+6x^2
+\]
+is an atom, with $1\le k\le8$.
+For a nonnegative integer $t$, the polynomial $1+tx+6x^2$ is reducible in
+$\Nzero[x]$ precisely when
+\[
+1+tx+6x^2=(1+ux)(1+vx),\qquad uv=6,
+\]
+so $t=u+v\in\{5,7\}$. These exclude exactly $k=3,1$, proving the
+claimed length set. The constant-one case therefore has a different
+character from Theorem~\ref{thm:main}.
+\end{remark}
+
+\section{A prescribed-length consequence of Laurent Goldbach theorems}
+\label{sec:laurent}
+
+Let
+\[
+R_t=\Nzero[x_1^{\pm1},\ldots,x_t^{\pm1}],\qquad t\ge1.
+\]
+Its units are precisely the coefficient-one monomials. A Laurent
+polynomial is a finite sum with exponent vectors in $\Z^t$; write
+$\nu(F)=F(1,\ldots,1)$ for its coefficient mass. Define $\Llaur(F)$
+to be the set of positive integers $k$ for which $F$ is a sum of exactly
+$k$ multiplicative atoms of $R_t$.
+
+Liao--Polo's univariate theorem~\cite{LiaoPolo}, and its
+multivariate extension by Kaplan and Polo~\cite[Corollary~3.8]{KaplanPolo},
+state that every $F\in R_t$ with at least two support exponents and
+$\nu(F)>3$ is a sum of two atoms. The following is an elementary
+consequence, not a separate two-atom theorem.
+
+\begin{proposition}[Laurent prescribed lengths]\label{prop:laurent}
+Let $F\in R_t$ have at least two distinct support exponents. For every
+integer $k\ge2$,
+\[
+k\in\Llaur(F)\quad\Longleftrightarrow\quad2k\le\nu(F).
+\]
+Length one occurs precisely when $F$ itself is a Laurent atom.
+\end{proposition}
+
+\begin{proof}
+Every Laurent atom has mass at least two, since every mass-one element
+is a unit. This proves necessity.
+
+Suppose $\nu(F)\ge2k$. Reserve one coefficient unit at each of two
+distinct support exponents. From the remaining units, select
+$2(k-2)$ and partition them into $k-2$ pairs. Each pair is an atom:
+it has mass two, whereas a product of two nonzero nonunits has mass
+at least four.
+
+After removing these atoms, the remainder $G$ has
+\[
+\nu(G)=\nu(F)-2(k-2)\ge4,
+\]
+and retains two support exponents because the reserved units were
+not removed. Kaplan--Polo's theorem expresses $G$ as a sum of two
+Laurent atoms. Adjoining the removed $k-2$ atoms gives exactly $k$
+summands.
+\end{proof}
+
+\begin{remark}[Why localization changes the answer]
+For nonmonomial Laurent polynomials, the admissible representation
+lengths are characterized entirely by the coefficient mass through
+the inequality $2k\le\nu(F)$. In contrast, the ordinary polynomial
+semiring $\Nzero[x]$ exhibits a richer structure. Every atom other
+than $x$ contributes at least one unit to the constant coefficient,
+while each occurrence of $x$ contributes to the linear coefficient.
+This introduces the additional sharp constraint $k\le a+b$.
+Furthermore, since $x$ is an atom of mass one in $\Nzero[x]$
+but becomes a unit in the Laurent semiring, the corresponding
+weighted constraint in the ordinary setting is
+$2k\le f(1)+b$. Together, Theorem~\ref{thm:main} and
+Proposition~\ref{prop:laurent} provide a complete comparison
+of prescribed representation lengths in these two settings,
+identifying precisely how localization changes the additive
+structure of multiplicative atoms.
+\end{remark}
+
+\section*{Acknowledgment}
+AI tools like GPT-5.5, GPT-5.6, GPT-6 assisted mathematical exploration, proof
+checking, and paper preparation.
+
+\begin{thebibliography}{9}
+
+\bibitem{GottiPolo}
+F. Gotti and H. Polo,
+\emph{On the arithmetic of polynomial semidomains},
+Forum Math. \textbf{35} (2023), no.~5, 1179--1197.
+\href{https://doi.org/10.1515/forum-2022-0091}{doi:10.1515/forum-2022-0091}.
+
+\bibitem{Hayes}
+D.~R. Hayes,
+\emph{A Goldbach theorem for polynomials with integral coefficients},
+Amer. Math. Monthly \textbf{72} (1965), no.~1, 45--46.
+\href{https://doi.org/10.2307/2312999}{doi:10.2307/2312999}.
+
+\bibitem{KaplanPolo}
+N. Kaplan and H. Polo,
+\emph{A Goldbach theorem for Laurent series semidomains},
+New York J. Math. \textbf{31} (2025), 1409--1426.
+\url{https://nyjm.albany.edu/j/2025/31-53v.pdf}.
+
+\bibitem{LiMopuriZhang}
+E. Li, A. Mopuri, and C. Zhang,
+\emph{Goldbach theorems for group semidomains},
+preprint, arXiv:2412.00590 (2024).
+\url{https://arxiv.org/abs/2412.00590}.
+
+\bibitem{LiaoPolo}
+S. Liao and H. Polo,
+\emph{A Goldbach theorem for Laurent polynomials with positive integer coefficients},
+Amer. Math. Monthly \textbf{131} (2024), no.~8, 704--711.
+\href{https://doi.org/10.1080/00029890.2024.2363725}{doi:10.1080/00029890.2024.2363725}.
+
+\bibitem{Pollack}
+P. Pollack,
+\emph{On polynomial rings with a Goldbach property},
+Amer. Math. Monthly \textbf{118} (2011), no.~1, 71--77.
+\href{https://doi.org/10.4169/amer.math.monthly.118.01.071}{doi:10.4169/amer.math.monthly.118.01.071}.
+
+\end{thebibliography}
+
+\end{document}
